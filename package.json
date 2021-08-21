@@ -1,0 +1,28 @@
+{
+  "name": "getir-interview",
+  "version": "1.0.0",
+  "description": "getir mongo rest exercise ",
+  "main": "app.js",
+  "scripts": {
+    "debug": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "interview",
+    "getir"
+  ],
+  "author": "pavan.sanas@outlook.com",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "2.0.12",
+    "dotenv": "10.0.0"
+  },
+  "dependencies": {
+    "swagger-ui-express": "4.1.6",
+    "express": "4.17.1",
+    "swagger-jsdoc": "6.1.0",
+    "cors": "2.8.5",
+    "express-validator":"6.12.1",
+    "mongoose": "5.13.7"
+  }
+}
