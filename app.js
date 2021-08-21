@@ -11,7 +11,7 @@ const app = express();
 const swaggerUi = require("swagger-ui-express");
 var cors = require("cors");
 const swaggerJSDoc = require("swagger-jsdoc");
-const liveCheckController = require("./src/controllers/live_check");
+const liveCheckController = require("./src/controllers/livecheck");
 const dataController = require("./src/controllers/data");
 const swaggerDefinition = require("./src/doc/swagger_defination");
 
