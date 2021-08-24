@@ -14,8 +14,7 @@
   "author": "pavan.sanas@outlook.com",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "2.0.12",
-    "dotenv": "10.0.0"
+    "nodemon": "2.0.12"
   },
   "dependencies": {
     "swagger-ui-express": "4.1.6",
@@ -23,6 +22,7 @@
     "swagger-jsdoc": "6.1.0",
     "cors": "2.8.5",
     "express-validator":"6.12.1",
-    "mongoose": "5.13.7"
+    "mongoose": "5.13.7",
+    "dotenv": "10.0.0"
   }
 }
