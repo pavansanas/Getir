@@ -41,7 +41,7 @@ app.use("/v0/", dataController);
 /**
  * Start application with configure Port
  */
-const serverPort = process.env.PORT || 8080;
+const serverPort = process.env.PORT || 3001;
 app.listen(serverPort, () => {
   console.log(`listening at port:${serverPort}`);
 });
