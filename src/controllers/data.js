@@ -2,20 +2,13 @@ var express = require("express");
 const { body, validationResult } = require("express-validator");
 var router = express.Router();
 
-router.post(
-  "/data",
-  body("startDate").isDate().withMessage("date format should be yyyy-MM-dd"),
-  body("endDate").isDate().withMessage("date format should be yyyy-MM-dd"),
-  body("minCount").isNumeric().withMessage("it should be number"),
-  body("maxCount").isNumeric().withMessage("it should be number"),
-  function (req, res) {
-    const { isValidate, errorMessage } = validateRequest(req);
-    if (!isValidate) {
-      return res.status(400).json(errorMessage);
-    }
-    return res.send("ok");
+router.post("/data", validationDefination(), function (req, res) {
+  const { isValidate, errorMessage } = validateRequest(req);
+  if (!isValidate) {
+    return res.status(400).json(errorMessage);
   }
-);
+  return res.send("ok");
+});
 /**
  * @typedef {Object} ValidationResult
  * @property {boolean} isValidate - true if req is validate otherwise false
@@ -45,6 +38,35 @@ function validateRequest(req) {
   return { isValidate: true };
 }
 
+function validationDefination() {
+  return [
+    body("startDate")
+      .exists({ checkNull: true })
+      .withMessage("it should not be empty")
+      .bail()
+      .isDate()
+      .withMessage("date format should be yyyy-MM-dd"),
+    body("endDate")
+      .exists({ checkNull: true })
+      .withMessage("it should not be empty")
+      .bail()
+      .isDate()
+      .withMessage("date format should be yyyy-MM-dd"),
+    body("minCount")
+      .exists({ checkNull: true })
+      .withMessage("it should not be empty")
+      .bail()
+      .isNumeric()
+      .withMessage("it should be number"),
+    body("maxCount")
+      .exists({ checkNull: true })
+      .withMessage("it should not be empty")
+      .bail()
+      .isNumeric()
+      .withMessage("it should be number"),
+  ];
+}
+
 module.exports = router;
 
 /**
@@ -70,10 +92,13 @@ module.exports = router;
  *               endDate:
  *                 type: string
  *                 format: date
+ *                 required: true
  *               minCount:
  *                 type: integer
+ *                 required: true
  *               maxCount:
  *                 type: integer
+ *                 required: true
  *     responses:
  *       '200':
  *         description: Users were obtained
