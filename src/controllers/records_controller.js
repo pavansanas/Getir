@@ -1,13 +1,32 @@
 var express = require("express");
 const { body, validationResult } = require("express-validator");
+const recordsService = require("../services/records_service");
 var router = express.Router();
 
-router.post("/data", validationDefination(), function (req, res) {
+router.post("/v0/records", validationDefination(), async (req, res) => {
   const { isValidate, errorMessage } = validateRequest(req);
   if (!isValidate) {
     return res.status(400).json(errorMessage);
   }
-  return res.send("ok");
+  try {
+    const { startDate, endDate, minCount, maxCount } = req.body;
+    const records = await recordsService.getRecord(
+      startDate,
+      endDate,
+      minCount,
+      maxCount
+    );
+    return res.status(200).json({
+      records,
+      code: 200,
+      msg: "Success",
+    });
+  } catch (err) {
+    return res.status(200).json({
+      internal_code: 500,
+      error_message: `Server Error. ${err.message}`,
+    });
+  }
 });
 /**
  * @typedef {Object} ValidationResult
@@ -71,7 +90,7 @@ module.exports = router;
 
 /**
  * @openapi
- * "/v0/data":
+ * "/v0/records":
  *   post:
  *     tags:
  *     - User Data

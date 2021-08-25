@@ -22,7 +22,7 @@
     "swagger-jsdoc": "6.1.0",
     "cors": "2.8.5",
     "express-validator":"6.12.1",
-    "mongoose": "5.13.7",
+    "mongodb": "4.1.1",
     "dotenv": "10.0.0"
   }
 }

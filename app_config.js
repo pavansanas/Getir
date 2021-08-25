@@ -11,8 +11,8 @@ const app = express();
 const swaggerUi = require("swagger-ui-express");
 var cors = require("cors");
 const swaggerJSDoc = require("swagger-jsdoc");
-const liveCheckController = require("./src/controllers/livecheck");
-const dataController = require("./src/controllers/data");
+const liveCheckController = require("./src/controllers/livecheck_controller");
+const recordsController = require("./src/controllers/records_controller");
 const swaggerDefinition = require("./src/doc/swagger_defination");
 
 /**
@@ -37,6 +37,6 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
  * Set Routers/Controllers
  */
 app.use("/", liveCheckController);
-app.use("/v0/", dataController);
+app.use("/", recordsController);
 
 module.exports = app;
