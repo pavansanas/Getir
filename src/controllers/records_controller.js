@@ -22,7 +22,7 @@ router.post("/v0/records", validationDefination(), async (req, res) => {
       msg: "Success",
     });
   } catch (err) {
-    return res.status(200).json({
+    return res.status(500).json({
       internal_code: 500,
       error_message: `Server Error. ${err.message}`,
     });

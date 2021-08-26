@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "debug": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "jest --watchAll"
   },
   "keywords": [
     "interview",
@@ -14,7 +15,9 @@
   "author": "pavan.sanas@outlook.com",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "2.0.12"
+    "nodemon": "2.0.12",
+    "jest": "27.0.6",
+    "supertest":"6.1.6"
   },
   "dependencies": {
     "swagger-ui-express": "4.1.6",
